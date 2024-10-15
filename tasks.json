@@ -1,0 +1,9 @@
+[
+    {
+        "id": 1,
+        "description": "Buy movie tickets",
+        "status": "todo",
+        "createdAt": "2024-10-15T09:23:29.680660",
+        "updatedAt": "2024-10-15T09:56:35.925075"
+    }
+]
