@@ -38,6 +38,12 @@ def main():
     parser_delete=subparsers.add_parser('delete')
     parser_delete.add_argument('-n',type=int,help='An integer argument')
     
+    parser_mark_in_progress=subparsers.add_parser('mark-in-progress')
+    parser_mark_in_progress.add_argument('-n',type=int)
+
+    parser_mark_done=subparsers.add_parser('mark-done')
+    parser_mark_done.add_argument('-n',type=int)
+
     args=parser.parse_args()
 
     print(sys.argv[0],len(sys.argv))
@@ -55,6 +61,10 @@ def main():
         update_task(args.n,args.s)
     elif args.command=='delete':
         delete_task(args.n)
+    elif args.command=='mark-in-progress':
+        mark_in_progress(args.n)
+    elif args.command=='mark-done':
+        mark_done(args.n)
     else:
         print("Unknown command")
 
@@ -130,6 +140,40 @@ def delete_task(id):
         print(f"Deleted task Id: {id}")
     else:
         print(f"Task with ID: {id} not found")  
+
+def mark_in_progress(id):
+    tasks=load_tasks()
+
+    task_found=False
+    for task in tasks:
+        if task['id']==id:
+            task['status']='in-progress'
+            task['updatedAt']=datetime.now().isoformat()
+            task_found=True
+            break
+
+    if task_found:
+        save_tasks(tasks)
+        print(f"Task ID {id} marked as 'in-progress'.")
+    else:
+        print(f"Task with ID {id} not found")
+
+def mark_done(id):
+    tasks=load_tasks()
+
+    task_found=False
+    for task in tasks:
+        if task['id']==id:
+            task['status']='done'
+            task['updatedAt']=datetime.now().isoformat()
+            task_found=True
+            break
+
+    if task_found:
+        save_tasks(tasks)
+        print(f"Task ID {id} marked as done")
+    else:
+        print(f"Task with ID {id} not found")
 
 if __name__=='__main__':
     main()
