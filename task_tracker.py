@@ -4,7 +4,7 @@ import os
 from datetime import datetime
 import argparse
 
-
+#To understand branches
 def load_tasks():
     if not os.path.exists('tasks.json'):
         return []
