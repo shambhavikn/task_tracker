@@ -5,5 +5,12 @@
         "status": "todo",
         "createdAt": "2024-10-15T09:23:29.680660",
         "updatedAt": "2024-10-15T09:56:35.925075"
+    },
+    {
+        "id": 2,
+        "description": "buy chocolates",
+        "status": "todo",
+        "createdAt": "2024-10-15T23:06:36.259004",
+        "updatedAt": "2024-10-15T23:06:36.259004"
     }
 ]
